@@ -22,15 +22,14 @@ function raw(open, close, searchRegex, replaceValue) {
   return (s = '') => {
     if (s === '') {
       return s
-    } else {
-      return (
-        open +
-        (~(s += '').indexOf(close, 4) // skip opening \x1b[
-          ? s.replace(searchRegex, replaceValue)
-          : s) +
-        close
-      )
     }
+    return (
+      open +
+      (~(s += '').indexOf(close, 4) // skip opening \x1b[
+        ? s.replace(searchRegex, replaceValue)
+        : s) +
+      close
+    )
   }
 }
 
@@ -79,39 +78,38 @@ function createColors(enabled = isColorSupported) {
       bgCyan: color(46, 49),
       bgWhite: color(47, 49)
     }
-  } else {
-    return {
-      isColorSupported: false,
-      reset: nope,
-      bold: nope,
-      dim: nope,
-      italic: nope,
-      underline: nope,
-      inverse: nope,
-      hidden: nope,
-      strikethrough: nope,
+  }
+  return {
+    isColorSupported: false,
+    reset: nope,
+    bold: nope,
+    dim: nope,
+    italic: nope,
+    underline: nope,
+    inverse: nope,
+    hidden: nope,
+    strikethrough: nope,
 
-      // Colors
-      black: nope,
-      red: nope,
-      green: nope,
-      yellow: nope,
-      blue: nope,
-      magenta: nope,
-      cyan: nope,
-      white: nope,
-      gray: nope,
+    // Colors
+    black: nope,
+    red: nope,
+    green: nope,
+    yellow: nope,
+    blue: nope,
+    magenta: nope,
+    cyan: nope,
+    white: nope,
+    gray: nope,
 
-      // Background
-      bgBlack: nope,
-      bgRed: nope,
-      bgGreen: nope,
-      bgYellow: nope,
-      bgBlue: nope,
-      bgMagenta: nope,
-      bgCyan: nope,
-      bgWhite: nope
-    }
+    // Background
+    bgBlack: nope,
+    bgRed: nope,
+    bgGreen: nope,
+    bgYellow: nope,
+    bgBlue: nope,
+    bgMagenta: nope,
+    bgCyan: nope,
+    bgWhite: nope
   }
 }
 
